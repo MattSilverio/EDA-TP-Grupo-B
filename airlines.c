@@ -2,6 +2,7 @@
 #include<stdlib.h>
 #include<string.h>
 #include<ctype.h>
+#include<time.h>
 
 
 struct al{
@@ -18,6 +19,8 @@ int hash(char ch);
 char hash_inverso(int n);
 
 int main(void){
+
+    clock_t inicioT = clock();
 
     FILE *f;
     f = fopen("Airlines.csv", "r");
@@ -85,6 +88,9 @@ int main(void){
     airlines = (airline*) malloc(sizeof(airline) * conta_cias);
 
     k = 0;
+
+    clock_t inicioM = clock();
+
     for(i=0; i<36; i++)
         for(j=0; j<36; j++){
             if(matriz_atrasos[i][j] != -1){
@@ -103,6 +109,8 @@ int main(void){
             }
         }
 
+    clock_t fimM = clock();
+
         for(i=0; i< conta_cias; i++){
             printf("%s, atrasos: %d, total: %d, media: %lf\n", airlines[i].nome,
                                                                 airlines[i].atraso,
@@ -110,7 +118,11 @@ int main(void){
                                                                 airlines[i].media);
         }
 
+        clock_t inicioSS = clock();
+
         selectionsort(airlines, conta_cias);
+
+        clock_t fimSS = clock();
 
         putchar('\n');
         for(i=0; i< conta_cias; i++){
@@ -125,7 +137,13 @@ int main(void){
             fprintf(f, "%s,%lf\n", airlines[i].nome, airlines[i].media);
         fclose(f);
 
+    clock_t fimT = clock();
 
+    double tempoT = (double)(fimT - inicioT) / CLOCKS_PER_SEC;
+    double tempoM = (double)(fimM - inicioM) / CLOCKS_PER_SEC;
+    double tempoSS = (double)(fimSS - inicioSS) / CLOCKS_PER_SEC;
+
+    printf("\nTempo de execução: %fs\nTempo de média: %fs\nTempo de sort: %fs\n",tempoT, tempoM, tempoSS);
 
     return 0;
 }
