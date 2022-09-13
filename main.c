@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "lib/CarregarArquivo.c"
 #include "lib/EmitirRelatorio.c"
-#include "lib/FecharAplicação.c"
+#include "lib/FecharAplicacao.c"
 
 
 int main(){
