@@ -1,13 +1,15 @@
 #include <stdio.h>
 
-void CarregarArquivo(FILE *arquivo) {
+void CarregarArquivo(FILE *arquivo, long int *posicao) {
     
     char string[300];
     char ch;
-    int i = 1;
+    int i = 0;
 
     fscanf(arquivo, "%[^\n]", string);
     ch = fgetc(arquivo);
+    posicao[i] = ftell(arquivo);
+    i++;
 
     while(1){
         fscanf(arquivo, "%[^\n]", string);
@@ -16,9 +18,11 @@ void CarregarArquivo(FILE *arquivo) {
             break;
         }
 
-        printf(string);
-        printf("\n");
+        posicao[i] = ftell(arquivo);
 
+        printf("bytes: %d - linha: %d\n", posicao[i], i);
+        printf("%s\n", string);
+        i++;
     }
  
 }

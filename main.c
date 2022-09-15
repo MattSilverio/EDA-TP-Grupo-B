@@ -7,6 +7,7 @@ int main(){
 
     char opcao, nomeArquivo[50];
     FILE *arquivo = NULL;
+    long int posicao[962];
 
     while(opcao != '3'){
 
@@ -30,14 +31,14 @@ int main(){
                     break;
                 }
 
-                CarregarArquivo(arquivo);
+                CarregarArquivo(arquivo, posicao);
                 fclose(arquivo);
                 arquivo = NULL;
 
                 break;
 
             case '2':
-
+                
                 if(arquivo == NULL){
                     printf("\nArquivo Vazio!!!\n\n");
                     break;
