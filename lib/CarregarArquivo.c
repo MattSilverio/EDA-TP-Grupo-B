@@ -23,13 +23,12 @@ void CarregarArquivo(FILE *arquivo, long int *posicao) {
             break;
         }
 
-        i++;
-
         chave = strcat(reino, filo);
         chave = strcat(chave, classe);
 
-        printf("%s\n", chave);
-        printf("bytes: %d - linha: %d\n", posicao[i], i);
+        printf("chave: %s - bytes: %d - linha: %d\n", chave, posicao[i], i);
+        
+        i++;
     }
  
 }
