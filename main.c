@@ -31,9 +31,7 @@ int main(){
                     break;
                 }
 
-                CarregarArquivo(arquivo, posicao);
-                fclose(arquivo);
-                arquivo = NULL;
+                CarregarArquivo(arquivo, posicao);                
 
                 break;
 
@@ -44,11 +42,11 @@ int main(){
                     break;
                 }
 
-                EmitirRelatorio();
+                EmitirRelatorio(arquivo, posicao);
                 break;
                 
             case '3':
-                
+                fclose(arquivo);                
                 FecharAplicacao();
                 break;
         }
